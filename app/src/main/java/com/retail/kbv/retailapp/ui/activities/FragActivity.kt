@@ -1,7 +1,6 @@
 package com.retail.kbv.retailapp.ui.activities
 
 import android.os.Bundle
-import android.support.v4.graphics.drawable.TintAwareDrawable
 import android.transition.TransitionSet
 import android.view.View
 import com.hannesdorfmann.mosby3.mvp.MvpNullObjectBasePresenter
@@ -10,6 +9,7 @@ import com.retail.kbv.retailapp.ui.fragments.BaseFragment
 import com.retail.kbv.retailapp.ui.fragments.FragmentsFactory
 import timber.log.Timber
 import java.lang.Exception
+import kotlin.reflect.KClass
 
 
 abstract class FragActivity<V: MvpView, P: MvpNullObjectBasePresenter<V>>: BaseActivity<V, P>() {
@@ -24,19 +24,23 @@ abstract class FragActivity<V: MvpView, P: MvpNullObjectBasePresenter<V>>: BaseA
         super.onSaveInstanceState(outState)
     }
 
-    fun switchToFragment(fragmentClass: Class<out BaseFragment<*, *, *>>,
+    protected fun switchToFragment(fragmentClass: KClass<out BaseFragment<*,*,*>>, position: Int) {
+        this.switchToFragment(fragmentClass, position, null, null, null, null)
+    }
+
+    protected fun switchToFragment(fragmentClass: KClass<out BaseFragment<*, *, *>>,
                                 position: Int,
                                 data: Bundle?,
                                 sharedElement: View?,
                                 sharedAnchor: String?,
                                 transitionSet: TransitionSet?) {
-        val tag = fragmentClass.name
-        var fragment: BaseFragment<*,*,*>
+        val tag = fragmentClass.qualifiedName
+        val fragment: BaseFragment<*,*,*>
         try {
             fragment = if (data != null)
-                FragmentsFactory.buildFragment(this, tag, data)
+                FragmentsFactory.buildFragment(this, tag!!, data)
             else
-                FragmentsFactory.buildFragment(this, tag)
+                FragmentsFactory.buildFragment(this, tag!!)
             if (transitionSet != null) {
                 fragment.setSharedElementEnterTransition(transitionSet)
             }

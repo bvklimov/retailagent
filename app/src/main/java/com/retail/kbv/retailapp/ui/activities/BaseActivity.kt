@@ -50,14 +50,15 @@ abstract class BaseActivity<V: MvpView, P: MvpPresenter<V>>: MvpActivity<V, P>()
         startActivityForResult(intent, requestCode)
     }
 
-    protected fun getComponent(): UserComponent? {
+    protected fun getComponent(): UserComponent {
         if (userComponent == null)
             addComponent()
-        return userComponent
+        return userComponent!!
     }
 
     private fun addComponent() {
-        userComponent = app.userComponent
+        app = application as BaseApp
+        userComponent = app.getUserComponent()
     }
 
     protected fun resetComponent() {

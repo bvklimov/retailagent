@@ -18,16 +18,17 @@ class BaseApp: Application() {
                 .build()
     }
 
-    fun getUserComponent() {
+    fun resetActivityComponent() {
+        userComponent = null
+    }
+
+    fun getUserComponent(): UserComponent {
         if (userComponent == null) {
             userComponent = DaggerUserComponent.builder()
                     .appComponent(appComponent)
                     .build()
         }
-    }
-
-    fun resetActivityComponent() {
-        userComponent = null
+        return userComponent!!
     }
 
     override fun onCreate() {

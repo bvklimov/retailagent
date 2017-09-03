@@ -9,11 +9,11 @@ import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
-public class AppModule(private val app: BaseApp) {
+class AppModule(private val app: BaseApp) {
 
     @Provides
     @Singleton
-    public fun provideContext(): Context {
+    fun provideContext(): Context {
         return app.baseContext
     }
 

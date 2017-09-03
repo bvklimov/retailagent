@@ -10,6 +10,8 @@ import javax.inject.Singleton
 @Singleton
 interface AppComponent {
     fun context(): Context
+
     @Named("globalBus")
     fun rxBus(): RxBus
+
 }

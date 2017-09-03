@@ -20,7 +20,7 @@ abstract class BaseFragment<V: MvpView, P: MvpNullObjectBasePresenter<V>, VS: Re
     : MvpViewStateFragment<V, P, VS>() {
 
     lateinit var appComponent: UserComponent
-    private lateinit var rxBus: RxBus
+    protected lateinit var rxBus: RxBus
     private var subscription: Disposable? = null
 
     protected var isLoading = false
