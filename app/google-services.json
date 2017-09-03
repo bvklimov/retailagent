@@ -1,0 +1,74 @@
+{
+  "project_info": {
+    "project_number": "217167815272",
+    "firebase_url": "https://psychic-heading-161417.firebaseio.com",
+    "project_id": "psychic-heading-161417",
+    "storage_bucket": "psychic-heading-161417.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:217167815272:android:fc71dd45954ec6a6",
+        "android_client_info": {
+          "package_name": "com.retail.kbv.retailapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "217167815272-2r1405ds3r6u59loou8tkgajo61vlel3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIRxNeXxzV6V1byQ9rgSgHbjOtHQ40eRU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:217167815272:android:43d3a78a1b21f71f",
+        "android_client_info": {
+          "package_name": "com.retail.kbv.retailapp.demo.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "217167815272-2r1405ds3r6u59loou8tkgajo61vlel3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIRxNeXxzV6V1byQ9rgSgHbjOtHQ40eRU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+
+  "configuration_version": "1"
+}
