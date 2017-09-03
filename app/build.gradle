@@ -3,6 +3,7 @@ apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'realm-android'
 apply plugin: 'com.getkeepsafe.dexcount'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 
 android {
@@ -186,6 +187,7 @@ dependencies {
     compile "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:$rootProject.ext.rxBinding"
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.dagger"
     compile "com.google.dagger:dagger:$rootProject.ext.dagger"
+    kapt "com.google.dagger:dagger-compiler:$rootProject.ext.dagger"
     provided "javax.annotation:jsr250-api:$rootProject.ext.jsr250"
     compile "com.jakewharton:butterknife:$rootProject.ext.butterknife"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknife"
@@ -212,7 +214,7 @@ dependencies {
 
     testCompile "org.jetbrains.kotlin:kotlin-stdlib:$rootProject.ext.kotlinStdLib"
     androidTestCompile "org.jetbrains.kotlin:kotlin-stdlib:$rootProject.ext.kotlinStdLib"
-    compile 'com.android.support:design:26.+'
+    compile 'org.jetbrains.kotlin:kotlin-stdlib:1.1.4-2'
 }
 
 apply plugin: 'com.google.gms.google-services'

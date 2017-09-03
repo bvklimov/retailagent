@@ -2,6 +2,7 @@ package com.retail.kbv.retailapp
 
 import android.app.Application
 import com.jakewharton.threetenabp.AndroidThreeTen
+import com.retail.kbv.retailapp.injections.DaggerUserComponent
 import com.retail.kbv.retailapp.injections.UserComponent
 import com.retail.kbv.retailapp.rxbus.RxBus
 import timber.log.Timber
