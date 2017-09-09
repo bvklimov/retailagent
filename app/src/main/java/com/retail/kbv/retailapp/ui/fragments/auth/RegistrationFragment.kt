@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.retail.kbv.retailapp.R
-import com.retail.kbv.retailapp.presenters.auth.login.RegistrationFragViewState
+import com.retail.kbv.retailapp.presenters.auth.registration.RegistrationFragViewState
 import com.retail.kbv.retailapp.presenters.auth.registration.RegistrationFragPresenter
 import com.retail.kbv.retailapp.presenters.auth.registration.RegistrationFragView
 import com.retail.kbv.retailapp.rxbus.RxBus

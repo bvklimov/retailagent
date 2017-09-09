@@ -21,7 +21,9 @@ class AuthActivityPresenter(userComponent: UserComponent): BaseNetworkPresenter<
         val currentUser = auth?.currentUser
         if (currentUser == null)
             view.openRegisterForm()
-        else
+        else {
             userCredentials.email = currentUser.email
+            view.showContentActivity()
+        }
     }
 }

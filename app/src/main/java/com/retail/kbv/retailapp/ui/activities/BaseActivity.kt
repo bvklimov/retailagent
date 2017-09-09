@@ -1,6 +1,5 @@
 package com.retail.kbv.retailapp.ui.activities
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -13,6 +12,7 @@ import com.retail.kbv.retailapp.injections.UserComponent
 import com.retail.kbv.retailapp.rxbus.RxBus
 import com.retail.kbv.retailapp.rxbus.events.BackPressedEvent
 import java.lang.NullPointerException
+import kotlin.reflect.KClass
 
 abstract class BaseActivity<V: MvpView, P: MvpPresenter<V>>: MvpActivity<V, P>() {
     var userComponent: UserComponent? = null
@@ -21,30 +21,30 @@ abstract class BaseActivity<V: MvpView, P: MvpPresenter<V>>: MvpActivity<V, P>()
     lateinit var rxBus: RxBus
 
 
-    fun changeActivity(cls: Class<out Activity>) {
+    fun changeActivity(cls: KClass<out BaseActivity<*,*>>) {
         changeActivity(cls, -1)
     }
 
-    fun changeActivity(cls: Class<out Activity>, flags: Int) {
-        intent = Intent(this, cls)
+    fun changeActivity(cls: KClass<out BaseActivity<*,*>>, flags: Int) {
+        intent = Intent(this, cls.java)
         if (flags != -1) intent.flags = flags
         startActivity(intent)
     }
 
-    fun changeActivity(cls: Class<out Activity>, extras: Bundle?, flags: Int) {
-        intent = Intent(this, cls)
+    fun changeActivity(cls: KClass<out BaseActivity<*,*>>, extras: Bundle?, flags: Int) {
+        intent = Intent(this, cls.java)
         if (extras != null) intent.putExtras(extras)
         if (flags != -1) intent.flags = flags
         startActivity(intent)
     }
 
-    fun changeActivity(cls: Class<out Activity>, extras: Bundle?, flags: Int, reset: Boolean) {
+    fun changeActivity(cls: KClass<out BaseActivity<*,*>>, extras: Bundle?, flags: Int, reset: Boolean) {
         if (reset) resetComponent()
         changeActivity(cls, extras, flags)
     }
 
-    fun changeActivityForResult(cls: Class<out Activity>, extras: Bundle?, flags: Int, requestCode: Int) {
-        intent = Intent(this, cls)
+    fun changeActivityForResult(cls: KClass<out BaseActivity<*,*>>, extras: Bundle?, flags: Int, requestCode: Int) {
+        intent = Intent(this, cls.java)
         if (extras != null) intent.putExtras(extras)
         if (flags != -1) intent.flags = flags
         startActivityForResult(intent, requestCode)

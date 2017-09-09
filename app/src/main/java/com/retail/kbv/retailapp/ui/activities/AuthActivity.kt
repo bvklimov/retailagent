@@ -12,7 +12,6 @@ import javax.inject.Inject
 import javax.inject.Named
 
 class AuthActivity : FragActivity<AuthActivityView, AuthActivityPresenter>(), AuthActivityView {
-
     @field:[Inject Named("globalBus")]
     lateinit var globalRxBus: RxBus
 
@@ -39,5 +38,10 @@ class AuthActivity : FragActivity<AuthActivityView, AuthActivityPresenter>(), Au
     override fun showLoginForm() {
         switchToFragment(LoginFragment::class, act_mainContainer.id)
     }
+
+    override fun showContentActivity() {
+        changeActivity(ContentActivity::class)
+    }
+
 
 }
