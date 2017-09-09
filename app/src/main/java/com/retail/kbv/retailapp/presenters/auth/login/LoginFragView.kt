@@ -4,5 +4,4 @@ import com.retail.kbv.retailapp.presenters.NetworkRequestView
 
 
 interface LoginFragView : NetworkRequestView {
-    fun showLoginForm()
 }

@@ -15,7 +15,8 @@ import kotlinx.android.synthetic.main.frag_login.*
 import javax.inject.Inject
 import javax.inject.Named
 
-class LoginFragment: BaseFragment<LoginFragView, LoginFragPresenter, LoginFragViewState>() {
+class LoginFragment: BaseFragment<LoginFragView, LoginFragPresenter, LoginFragViewState>(),
+    LoginFragView {
 
     @field:[Inject Named("globalBus")]
     lateinit var globalRxBus: RxBus

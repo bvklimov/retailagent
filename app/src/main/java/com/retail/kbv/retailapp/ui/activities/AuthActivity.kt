@@ -6,10 +6,10 @@ import com.retail.kbv.retailapp.presenters.auth.AuthActivityPresenter
 import com.retail.kbv.retailapp.presenters.auth.AuthActivityView
 import com.retail.kbv.retailapp.rxbus.RxBus
 import com.retail.kbv.retailapp.ui.fragments.auth.LoginFragment
+import com.retail.kbv.retailapp.ui.fragments.auth.RegistrationFragment
+import kotlinx.android.synthetic.main.activity_auth.*
 import javax.inject.Inject
 import javax.inject.Named
-
-import kotlinx.android.synthetic.main.activity_auth.*
 
 class AuthActivity : FragActivity<AuthActivityView, AuthActivityPresenter>(), AuthActivityView {
 
@@ -21,11 +21,19 @@ class AuthActivity : FragActivity<AuthActivityView, AuthActivityPresenter>(), Au
         setContentView(R.layout.activity_auth)
         getComponent().inject(this)
         rxBus = globalRxBus
-        showLoginForm()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        presenter.checkAuth()
+    }
+
+    override fun openRegisterForm() {
+        switchToFragment(RegistrationFragment::class, act_mainContainer.id)
     }
 
     override fun createPresenter(): AuthActivityPresenter {
-        return if (presenter == null) AuthActivityPresenter() else presenter
+        return if (presenter == null) AuthActivityPresenter(getComponent()) else presenter
     }
 
     override fun showLoginForm() {

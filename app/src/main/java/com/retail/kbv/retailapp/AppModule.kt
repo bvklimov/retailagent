@@ -2,6 +2,7 @@ package com.retail.kbv.retailapp
 
 import android.content.Context
 import android.support.annotation.NonNull
+import com.retail.kbv.retailapp.model.UserCredentials
 import com.retail.kbv.retailapp.rxbus.RxBus
 import dagger.Module
 import dagger.Provides
@@ -22,5 +23,12 @@ class AppModule(private val app: BaseApp) {
     @Named("globalBus")
     fun provideRxBus(): RxBus {
         return app.rxBus
+    }
+
+    @Singleton
+    @Provides
+    @NonNull
+    fun provideUserCredentials(): UserCredentials {
+        return UserCredentials()
     }
 }
