@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.retail.kbv.retailapp.R
+import com.retail.kbv.retailapp.model.DataItem
 import com.retail.kbv.retailapp.presenters.content.image.ImageFragPresenter
 import com.retail.kbv.retailapp.presenters.content.image.ImageFragView
 import com.retail.kbv.retailapp.presenters.content.image.ImageFragViewState
 import com.retail.kbv.retailapp.rxbus.RxBus
 import com.retail.kbv.retailapp.ui.fragments.BaseFragment
+import kotlinx.android.synthetic.main.frag_image.*
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -48,4 +51,7 @@ class ImageFragment: BaseFragment<ImageFragView, ImageFragPresenter, ImageFragVi
     override fun onNewViewStateInstance() {
     }
 
+    override fun showContent(dataItem: DataItem) {
+        Glide.with(this).load(dataItem.image).into(fragImage_image)
+    }
 }

@@ -1,8 +1,8 @@
 package com.retail.kbv.retailapp.presenters.content.image
 
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.retail.kbv.retailapp.injections.UserComponent
+import com.retail.kbv.retailapp.model.DataItem
 import com.retail.kbv.retailapp.presenters.BaseNetworkPresenter
 import timber.log.Timber
 
@@ -13,22 +13,27 @@ class ImageFragPresenter(component: UserComponent): BaseNetworkPresenter<ImageFr
     init {
         component.inject(this)
         database = FirebaseDatabase.getInstance()
-        dataBaseRef = database?.getReference("items")
+        dataBaseRef = database?.getReference()
     }
 
-
-    private var auth: FirebaseAuth? = null
+    private val itemsList: MutableList<DataItem> = mutableListOf()
 
     fun init() {
-        dataBaseRef?.addValueEventListener(object : ValueEventListener {
+        val itemsListener = object : ValueEventListener {
+
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                Timber.d("Image data: " + dataSnapshot.getValue(String::class.java))
+                dataSnapshot.children.mapNotNullTo(itemsList) {
+                    it.getValue<DataItem>(DataItem::class.java)
+                }
+                view.showContent(itemsList[0])
+//                itemsList.forEach { item -> Timber.d("IMAGE = " + item.name) }
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                Timber.d(error.toException(), "Image data error: ")
+            override fun onCancelled(p0: DatabaseError) {
+                Timber.d(p0.toException(), "error")
             }
-        })
+        }
+        dataBaseRef?.child("items")?.addListenerForSingleValueEvent(itemsListener)
     }
 
 
