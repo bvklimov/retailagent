@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/itemData_image"
+        android:layout_above="@+id/itemData_controls"/>
+    <LinearLayout
+        android:id="@+id/itemData_controls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Item description"
+            android:textAlignment="center"
+            android:id="@+id/itemData_description"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/itemData_button"
+            android:text="Add"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,10 +1,12 @@
 package com.retail.kbv.retailapp.presenters.content.image
 
-import com.google.firebase.database.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.retail.kbv.retailapp.injections.UserComponent
-import com.retail.kbv.retailapp.model.DataItem
+import com.retail.kbv.retailapp.observables.dataBaseObservable
 import com.retail.kbv.retailapp.presenters.BaseNetworkPresenter
-import timber.log.Timber
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class ImageFragPresenter(component: UserComponent): BaseNetworkPresenter<ImageFragView>() {
     private var database: FirebaseDatabase? = null
@@ -16,25 +18,13 @@ class ImageFragPresenter(component: UserComponent): BaseNetworkPresenter<ImageFr
         dataBaseRef = database?.getReference()
     }
 
-    private val itemsList: MutableList<DataItem> = mutableListOf()
 
     fun init() {
-        val itemsListener = object : ValueEventListener {
-
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                dataSnapshot.children.mapNotNullTo(itemsList) {
-                    it.getValue<DataItem>(DataItem::class.java)
-                }
-                view.showContent(itemsList[0])
-//                itemsList.forEach { item -> Timber.d("IMAGE = " + item.name) }
-            }
-
-            override fun onCancelled(p0: DatabaseError) {
-                Timber.d(p0.toException(), "error")
-            }
-        }
-        dataBaseRef?.child("items")?.addListenerForSingleValueEvent(itemsListener)
+        dataBaseObservable()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({itemsList ->
+                    view.showContent(itemsList)
+                })
     }
-
-
 }
