@@ -9,6 +9,7 @@ import com.retail.kbv.retailapp.ui.activities.AuthActivity
 import com.retail.kbv.retailapp.ui.activities.ContentActivity
 import com.retail.kbv.retailapp.ui.fragments.auth.LoginFragment
 import com.retail.kbv.retailapp.ui.fragments.auth.RegistrationFragment
+import com.retail.kbv.retailapp.ui.fragments.content.BindingFragment
 import com.retail.kbv.retailapp.ui.fragments.content.ImageFragment
 import dagger.Component
 
@@ -21,6 +22,7 @@ import dagger.Component
     fun inject(authActivity: LoginFragment)
     fun inject(registrationFragment: RegistrationFragment)
     fun inject(imageFragment: ImageFragment)
+    fun inject(bindingFragment: BindingFragment)
 
     fun inject(registrationFragPresenter: RegistrationFragPresenter)
     fun inject(authActivityPresenter: AuthActivityPresenter)

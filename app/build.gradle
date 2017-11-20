@@ -7,6 +7,8 @@ apply plugin: 'kotlin-kapt'
 
 
 android {
+    dataBinding.enabled = true
+
     final globalAlias = "retail"
     final globalPass = "kbv123"
     def globalConfiguration = rootProject.ext
@@ -174,6 +176,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation "com.android.support:multidex:$rootProject.ext.multidex"
+
+    kapt "com.android.databinding:compiler:3.0.0"
 
     implementation "com.android.support:support-compat:$rootProject.ext.androidSupport"
     implementation "com.android.support:appcompat-v7:$rootProject.ext.androidSupport"
