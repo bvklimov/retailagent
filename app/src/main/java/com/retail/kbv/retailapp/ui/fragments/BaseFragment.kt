@@ -27,7 +27,7 @@ abstract class BaseFragment<V: MvpView, P: MvpNullObjectBasePresenter<V>, VS: Re
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        appComponent = (context.applicationContext as BaseApp).userComponent!!
+        appComponent = (context?.applicationContext as BaseApp).userComponent!!
     }
 
     protected fun getCurrentActiity(): FragActivity<V,P> {

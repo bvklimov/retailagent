@@ -5,14 +5,11 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
-
-        classpath 'com.android.tools.build:gradle:2.3.3'
-        classpath 'me.tatarka:gradle-retrolambda:3.7.0'
-        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.7.3'
-        classpath "io.realm:realm-gradle-plugin:3.5.0"
-        classpath 'com.google.gms:google-services:3.1.0'
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.4-2'
+        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.1'
+        classpath "io.realm:realm-gradle-plugin:4.1.1"
+        classpath 'com.google.gms:google-services:3.1.1'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.51'
     }
 }
 
@@ -45,11 +42,11 @@ project.ext {
     projectCode = 1
     sdkVersion = 26
     minSdkVersion = 21
-    buildToolsVersion = "26.0.1"
+    buildToolsVersion = "27.0.1"
 
-    androidSupport = '26.0.1'
+    androidSupport = '27.0.1'
     androidConstraint = '1.0.2'
-    playServices = '11.2.0'
+    playServices = '11.6.0'
     multidex = '1.0.2'
     flexbox = '0.3.0'
     guava = '22.0-android'

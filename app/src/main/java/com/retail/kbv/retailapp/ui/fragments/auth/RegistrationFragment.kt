@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.retail.kbv.retailapp.R
-import com.retail.kbv.retailapp.presenters.auth.registration.RegistrationFragViewState
 import com.retail.kbv.retailapp.presenters.auth.registration.RegistrationFragPresenter
 import com.retail.kbv.retailapp.presenters.auth.registration.RegistrationFragView
+import com.retail.kbv.retailapp.presenters.auth.registration.RegistrationFragViewState
 import com.retail.kbv.retailapp.rxbus.RxBus
 import com.retail.kbv.retailapp.ui.fragments.BaseFragment
 import kotlinx.android.synthetic.main.frag_registration.*
@@ -30,7 +30,7 @@ class RegistrationFragment: BaseFragment<RegistrationFragView, RegistrationFragP
         return inflater.inflate(R.layout.frag_registration, container, false)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.setupWatchers(fragReg_email, fragReg_password)
         frgaReg_button.setOnClickListener { presenter.makeRegistration() }

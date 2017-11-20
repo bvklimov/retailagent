@@ -10,9 +10,8 @@ import com.retail.kbv.retailapp.model.DataItem
 import kotlinx.android.synthetic.main.item_data.view.*
 
 class ItemAdapter(private val dataItems: List<DataItem>) : PagerAdapter() {
-
-    override fun isViewFromObject(view: View?, `object`: Any?): Boolean {
-        return view == `object`
+    override fun isViewFromObject(view: View, `object`: Any): Boolean {
+        return false
     }
 
     override fun getCount(): Int {
@@ -30,9 +29,5 @@ class ItemAdapter(private val dataItems: List<DataItem>) : PagerAdapter() {
         view.itemData_description.text = item.name
         container.addView(view)
         return view
-    }
-
-    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any?) {
-        container.removeView(`object` as View)
     }
 }

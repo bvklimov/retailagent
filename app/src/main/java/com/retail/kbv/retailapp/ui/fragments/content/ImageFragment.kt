@@ -35,7 +35,7 @@ class ImageFragment: BaseFragment<ImageFragView, ImageFragPresenter, ImageFragVi
         return if (viewState == null) ImageFragViewState() else viewState
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.init()
     }
